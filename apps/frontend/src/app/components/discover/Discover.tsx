@@ -5,7 +5,8 @@ import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
 
 export default function Discover() {
-  const [dogs, setDogs] = useState([]);
+  const [dogs, setDogs] = useState<any[]>([]);
+  const [visibleDogs, setVisibleDogs] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [offset, setOffset] = useState(0);
 
@@ -17,12 +18,12 @@ export default function Discover() {
 
     try {
       console.log("Fetching dogs");
-      const data = await fetch(`/api/dogs?limit=6&offset=${offset}`);
+      const data = await fetch(`/api/dogs?limit=20&offset=${offset}`);
       const newDogs = await data.json();
 
       // Add new dogs to the FRONT so existing dogs are shown first
       setDogs((prevDogs) => [...newDogs, ...prevDogs]);
-      setOffset((prev) => prev + 6);
+      setOffset((prev) => prev + 20);
     } catch (error) {
       console.error("Error fetching dogs: ", error);
     } finally {
@@ -39,18 +40,25 @@ export default function Discover() {
   // Fetch more when running low (but not on initial load)
   useEffect(() => {
     // Don't fetch if we have 0 dogs (initial state) or if already loading
-    if (dogs.length > 0 && dogs.length < 3 && !isLoading) {
+    if (dogs.length > 0 && dogs.length < 10 && !isLoading) {
       console.log("dogs.length: ", dogs.length);
       console.log("fetching more dogs cause were low");
       fetchDogs();
     }
   }, [dogs.length, isLoading, fetchDogs]);
 
+  // Keep visibleDogs filled with the last 3 dogs from the queue
+  useEffect(() => {
+    const lastThree = dogs.slice(-3);
+    setVisibleDogs(lastThree);
+  }, [dogs]);
+
   const onSwipe = (direction: string, dogName: string) => {
     console.log("You swiped: " + direction + " on " + dogName);
 
-    // Remove the swiped dog from the array
+    // Remove the swiped dog from both arrays
     setDogs((prevDogs) => prevDogs.slice(0, -1));
+    setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     if (direction === "right") {
       console.log("Match with " + dogName + "! 💕");
@@ -72,7 +80,7 @@ export default function Discover() {
       <h1 className="text-2xl font-bold mb-4">Discover Dogs</h1>
       <p className="text-gray-600 mb-8">Swipe right to match, left to pass!</p>
       <div className="relative h-[600px] w-full max-w-md mx-auto">
-        {dogs.map(
+        {visibleDogs.map(
           (dog: {
             id: string;
             name: string;
