@@ -35,8 +35,8 @@ export default function Sidebar() {
       {Object.values(threads).length === 0 && (
         <div className="text-center text-gray-500 py-4">No messages yet</div>
       )}
-      {Object.values(threads).map((thread) => (
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        {Object.values(threads).map((thread) => (
           <motion.div
             key={thread.threadId}
             initial={{ opacity: 0, x: 20 }}
@@ -59,8 +59,8 @@ export default function Sidebar() {
               }
             />
           </motion.div>
-        </AnimatePresence>
-      ))}
+        ))}
+      </AnimatePresence>
     </aside>
   );
 }
