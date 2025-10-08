@@ -31,6 +31,9 @@ export default function Sidebar() {
       <div className="pt-2 px-4">
         <h4 className="text-lg font-semibold">Messages</h4>
       </div>
+      {Object.values(threads).length === 0 && (
+        <div className="text-center text-gray-500 py-4">No messages yet</div>
+      )}
       {Object.values(threads).map((thread) => (
         <MessagesListItem
           key={thread.threadId}
