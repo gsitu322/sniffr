@@ -20,7 +20,8 @@ export default function Discover() {
       const data = await fetch(`/api/dogs?limit=6&offset=${offset}`);
       const newDogs = await data.json();
 
-      setDogs((prevDogs) => [...prevDogs, ...newDogs]);
+      // Add new dogs to the FRONT so existing dogs are shown first
+      setDogs((prevDogs) => [...newDogs, ...prevDogs]);
       setOffset((prev) => prev + 6);
     } catch (error) {
       console.error("Error fetching dogs: ", error);
