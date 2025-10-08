@@ -18,6 +18,7 @@ export default function MessagesListItem({
 
   return (
     <div
+      key={`${dogName}`}
       onClick={handleClick}
       className="px-4 py-2 flex items-center gap-4 cursor-pointer"
     >
