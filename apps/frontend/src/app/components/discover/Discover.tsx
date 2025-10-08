@@ -58,6 +58,13 @@ export default function Discover() {
     setVisibleDogs(firstThree);
   }, [dogs]);
 
+  const playMatchSound = () => {
+    const audio = new Audio("/sounds/notification.mp3");
+    audio.play().catch((error) => {
+      console.error("Error playing match sound: ", error);
+    });
+  };
+
   const onSwipe = (direction: string, dog: any) => {
     console.log("You swiped: " + direction + " on " + dog.name);
 
@@ -97,6 +104,8 @@ export default function Discover() {
             ],
           })
         );
+
+        playMatchSound();
       }, delay);
 
       // TODO: Send match notification to backend
