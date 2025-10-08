@@ -5,6 +5,7 @@ import { useAppSelector } from "@/store/hooks";
 
 export default function page() {
   const currentView = useAppSelector((state) => state.ui.currentView);
+  const selectedThread = useAppSelector((state) => state.ui.selectedThread);
 
   return (
     <main className="flex h-screen">
@@ -32,12 +33,10 @@ export default function page() {
             </div>
           </div>
         )}
-        {currentView === "messages" && (
+        {currentView === "messages" && selectedThread && (
           <div>
-            <h1 className="text-2xl font-bold mb-4">Messages</h1>
-            <p className="text-gray-600">
-              Select a conversation from the sidebar to start chatting!
-            </p>
+            <h1>Chat with {selectedThread.dogName}</h1>
+            <img src={selectedThread.imageUrl} />
           </div>
         )}
       </div>
