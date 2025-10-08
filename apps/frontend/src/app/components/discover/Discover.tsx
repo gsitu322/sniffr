@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
+import { Dog } from "@/app/type/dog";
 
 export default function Discover() {
   const [dogs, setDogs] = useState<any[]>([]);
@@ -82,14 +83,7 @@ export default function Discover() {
       <p className="text-gray-600 mb-8">Swipe right to match, left to pass!</p>
       <div className="relative h-[600px] w-full max-w-md mx-auto">
         {visibleDogs.map(
-          (dog: {
-            id: string;
-            name: string;
-            image: string;
-            breed: string;
-            age: number;
-            bio: string;
-          }) => (
+          (dog: Dog) => (
             <TinderCard
               key={dog.id}
               onSwipe={(dir) => onSwipe(dir, dog.name)}
