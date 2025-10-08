@@ -13,7 +13,7 @@ export default function MessagesListItem({
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(setSelectedThread({ dogName, imageUrl }));
+    dispatch(setSelectedThread({ dogName, imageUrl, message }));
   };
 
   return (

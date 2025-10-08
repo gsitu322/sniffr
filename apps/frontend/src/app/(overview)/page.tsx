@@ -63,7 +63,7 @@ export default function Page() {
               </div>
               <div className="space-y-4">
                 <div className="bg-gray-100 p-4 rounded-lg max-w-md">
-                  <p>Hey! Great to see you! 🐾</p>
+                  <p>{selectedThread.message}</p>
                 </div>
               </div>
             </motion.div>

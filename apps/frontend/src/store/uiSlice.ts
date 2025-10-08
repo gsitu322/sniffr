@@ -5,6 +5,7 @@ export type ViewType = "discover" | "messages";
 export interface MessageThread {
   dogName: string;
   imageUrl: string;
+  message: string;
 }
 
 interface UiState {
