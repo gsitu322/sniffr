@@ -1,6 +1,20 @@
+"use client";
+
+import { useAppDispatch } from "@/store/hooks";
+import { setView } from "@/store/uiSlice";
+
 export default function SidebarBanner() {
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch(setView("discover"));
+  };
+
   return (
-    <div className="p-4 flex items-center gap-4 bg-gray-100">
+    <div
+      onClick={handleClick}
+      className="p-4 flex items-center cursor-pointer gap-4 bg-gray-100"
+    >
       <img
         src="/golden-retriever.jpg"
         alt="find matches dog"
