@@ -5,15 +5,20 @@ export default function MessagesListItem({
   dogName,
   imageUrl,
   message,
+  unreadCount,
+  onClick,
 }: {
   dogName: string;
   imageUrl: string;
   message: string;
+  unreadCount: number;
+  onClick: () => void;
 }) {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
     dispatch(setSelectedThread({ dogName, imageUrl, message }));
+    onClick();
   };
 
   return (
