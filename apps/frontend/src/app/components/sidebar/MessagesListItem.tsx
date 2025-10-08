@@ -1,3 +1,6 @@
+import { useAppDispatch } from "@/store/hooks";
+import { setSelectedThread } from "@/store/uiSlice";
+
 export default function MessagesListItem({
   dogName,
   imageUrl,
@@ -7,8 +10,18 @@ export default function MessagesListItem({
   imageUrl: string;
   message: string;
 }) {
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch(setSelectedThread({ dogName, imageUrl, message }));
+  };
+
   return (
-    <div className="px-4 py-2 flex items-center gap-4">
+    <div
+      key={`${dogName}`}
+      onClick={handleClick}
+      className="px-4 py-2 flex items-center gap-4 cursor-pointer"
+    >
       <img
         src={`${imageUrl}`}
         alt="find matches dog"
