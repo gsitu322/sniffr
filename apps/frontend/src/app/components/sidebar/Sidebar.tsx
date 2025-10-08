@@ -4,6 +4,7 @@ import MessagesListItem from "./MessagesListItem";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { setActiveThread, markThreadAsRead } from "@/store/messagesSlice";
 import { setSelectedThread } from "@/store/uiSlice";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Sidebar() {
   const dispatch = useAppDispatch();
@@ -35,16 +36,30 @@ export default function Sidebar() {
         <div className="text-center text-gray-500 py-4">No messages yet</div>
       )}
       {Object.values(threads).map((thread) => (
-        <MessagesListItem
-          key={thread.threadId}
-          dogName={thread.dogName}
-          imageUrl={thread.dogImage}
-          message={thread.lastMessage}
-          unreadCount={thread.unreadCount}
-          onClick={() =>
-            handleMessageClick(thread.threadId, thread.dogName, thread.dogImage)
-          }
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={thread.threadId}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <MessagesListItem
+              key={thread.threadId}
+              dogName={thread.dogName}
+              imageUrl={thread.dogImage}
+              message={thread.lastMessage}
+              unreadCount={thread.unreadCount}
+              onClick={() =>
+                handleMessageClick(
+                  thread.threadId,
+                  thread.dogName,
+                  thread.dogImage
+                )
+              }
+            />
+          </motion.div>
+        </AnimatePresence>
       ))}
     </aside>
   );

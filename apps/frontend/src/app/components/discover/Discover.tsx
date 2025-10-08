@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
 import { Dog } from "@/app/type/dog";
+import { useAppDispatch } from "@/store/hooks";
+import { upsertThread } from "@/store/messagesSlice";
 
 export default function Discover() {
+  const dispatch = useAppDispatch();
   const [dogs, setDogs] = useState<any[]>([]);
   const [visibleDogs, setVisibleDogs] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,20 +58,40 @@ export default function Discover() {
     setVisibleDogs(firstThree);
   }, [dogs]);
 
-  const onSwipe = (direction: string, dogName: string) => {
-    console.log("You swiped: " + direction + " on " + dogName);
+  const onSwipe = (direction: string, dog: any) => {
+    console.log("You swiped: " + direction + " on " + dog.name);
 
     // Remove the swiped dog from the BEGINNING (sequential order)
     setDogs((prevDogs) => prevDogs.slice(1));
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     if (direction === "right") {
-      console.log("Match with " + dogName + "! 💕");
-    }
-  };
+      console.log("Match with " + dog.name + "! 💕");
 
-  const onCardLeftScreen = (dogName: string) => {
-    console.log(dogName + " left the screen");
+      // Create a new message thread
+      const threadId = `user-${dog.id}`; // You'll want to use actual user ID
+      dispatch(
+        upsertThread({
+          threadId,
+          dogName: dog.name,
+          dogImage: dog.image,
+          lastMessage: `You matched with ${dog.name}!`,
+          unreadCount: 0,
+          messages: [
+            {
+              id: Date.now().toString(),
+              content: `🎉 You matched with ${dog.name}!`,
+              senderId: "system",
+              timestamp: new Date().toISOString(),
+              read: true,
+            },
+          ],
+        })
+      );
+
+      // TODO: Show match notification/animation
+      // TODO: Send match notification to backend
+    }
   };
 
   return (
@@ -82,31 +105,28 @@ export default function Discover() {
       <h1 className="text-2xl font-bold mb-4">Discover Dogs</h1>
       <p className="text-gray-600 mb-8">Swipe right to match, left to pass!</p>
       <div className="relative h-[600px] w-full max-w-md mx-auto">
-        {visibleDogs.map(
-          (dog: Dog) => (
-            <TinderCard
-              key={dog.id}
-              onSwipe={(dir) => onSwipe(dir, dog.name)}
-              onCardLeftScreen={() => onCardLeftScreen(dog.name)}
-              preventSwipe={["up", "down"]}
-              className="absolute w-full"
-            >
-              <div className="bg-white rounded-lg shadow-xl p-6 cursor-grab active:cursor-grabbing">
-                <img
-                  src={dog.image}
-                  alt={dog.name}
-                  draggable={false}
-                  className="w-full h-96 object-cover rounded-lg mb-4 select-none"
-                />
-                <h2 className="text-2xl font-bold">{dog.name}</h2>
-                <p className="text-gray-600">
-                  {dog.breed} • {dog.age} years old
-                </p>
-                <p className="mt-2 text-gray-700">{dog.bio}</p>
-              </div>
-            </TinderCard>
-          )
-        )}
+        {visibleDogs.map((dog: Dog) => (
+          <TinderCard
+            key={dog.id}
+            onSwipe={(dir) => onSwipe(dir, dog)}
+            preventSwipe={["up", "down"]}
+            className="absolute w-full"
+          >
+            <div className="bg-white rounded-lg shadow-xl p-6 cursor-grab active:cursor-grabbing">
+              <img
+                src={dog.image}
+                alt={dog.name}
+                draggable={false}
+                className="w-full h-96 object-cover rounded-lg mb-4 select-none"
+              />
+              <h2 className="text-2xl font-bold">{dog.name}</h2>
+              <p className="text-gray-600">
+                {dog.breed} • {dog.age} years old
+              </p>
+              <p className="mt-2 text-gray-700">{dog.bio}</p>
+            </div>
+          </TinderCard>
+        ))}
       </div>
       <div className="flex gap-4 justify-center mt-8">
         <button className="bg-red-500 text-white w-16 h-16 rounded-full text-2xl hover:bg-red-600 transition">
