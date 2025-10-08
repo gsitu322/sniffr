@@ -21,8 +21,8 @@ export default function Discover() {
       const data = await fetch(`/api/dogs?limit=20&offset=${offset}`);
       const newDogs = await data.json();
 
-      // Add new dogs to the FRONT so existing dogs are shown first
-      setDogs((prevDogs) => [...newDogs, ...prevDogs]);
+      // Add new dogs to the END for sequential order
+      setDogs((prevDogs) => [...prevDogs, ...newDogs]);
       setOffset((prev) => prev + 20);
     } catch (error) {
       console.error("Error fetching dogs: ", error);
@@ -47,17 +47,18 @@ export default function Discover() {
     }
   }, [dogs.length, isLoading, fetchDogs]);
 
-  // Keep visibleDogs filled with the last 3 dogs from the queue
+  // Keep visibleDogs filled with the first 3 dogs from the queue (in order)
   useEffect(() => {
-    const lastThree = dogs.slice(-3);
-    setVisibleDogs(lastThree);
+    // Take first 3 and reverse so they stack properly (last item on top)
+    const firstThree = dogs.slice(0, 3).reverse();
+    setVisibleDogs(firstThree);
   }, [dogs]);
 
   const onSwipe = (direction: string, dogName: string) => {
     console.log("You swiped: " + direction + " on " + dogName);
 
-    // Remove the swiped dog from both arrays
-    setDogs((prevDogs) => prevDogs.slice(0, -1));
+    // Remove the swiped dog from the BEGINNING (sequential order)
+    setDogs((prevDogs) => prevDogs.slice(1));
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     if (direction === "right") {
