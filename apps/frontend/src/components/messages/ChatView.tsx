@@ -52,7 +52,7 @@ export default function ChatView({
           alt={dogName}
           className="w-16 h-16 object-cover rounded-full border-amber-400 border-2"
         />
-        <h1 className="text-2xl font-bold">Chat with {dogName}</h1>
+        <h1 className="text-2xl font-bold">{dogName}</h1>
       </div>
       <div className="space-y-4">
         {thread?.messages.map((msg) => (
