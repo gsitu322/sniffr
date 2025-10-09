@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
-import { Dog } from "@/app/type/dog";
+import { Dog } from "@/types/dog";
 import { useAppDispatch } from "@/store/hooks";
 import { upsertThread } from "@/store/messagesSlice";
+import { getInitialMessage } from "@/lib/initialMessageUtil";
+import type { Message } from "@/types/messages";
 
 export default function Discover() {
   const dispatch = useAppDispatch();
@@ -83,24 +85,7 @@ export default function Discover() {
       console.log("Match with " + dog.name + "! 💕");
       const delay = Math.random() * 5000 + 1000;
 
-      const startMessage = Math.random() < 0.5; // 50% chance to match
-      const initialMsg = startMessage
-        ? [
-            {
-              id: Date.now().toString(),
-              content: [
-                "🦴 Woof woof! 🐕‍🦺 Arf arf! 🐾",
-                "🐾 Bark bark! 🦮 Woof woof! 🦴",
-                "🐕 Arf arf! 🦴 Woof woof! 🐾",
-                "🦮 Woof! 🐾 Bark bark! 🐕‍🦺",
-                "🐕‍🦺 Arf! 🦴 Woof woof! 🦮",
-              ][Math.floor(Math.random() * 5)],
-              senderId: "system",
-              timestamp: new Date().toISOString(),
-              read: false,
-            },
-          ]
-        : [];
+      const initialMsg = getInitialMessage() as Message[];
 
       setTimeout(() => {
         // Create a new message thread
@@ -110,9 +95,10 @@ export default function Discover() {
             threadId,
             dogName: dog.name,
             dogImage: dog.image,
-            lastMessage: startMessage
-              ? initialMsg[0].content
-              : "Say something to start the conversation!",
+            lastMessage:
+              initialMsg && initialMsg.length > 0
+                ? initialMsg[0].content
+                : "Say something to start the conversation!",
             unreadCount: 1,
             messages: initialMsg,
           })

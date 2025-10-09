@@ -1,9 +1,9 @@
 "use client";
 
-import Sidebar from "../components/sidebar/Sidebar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { useAppSelector } from "@/store/hooks";
-import ChatView from "../components/messages/ChatView";
-import Discover from "../components/discover/Discover";
+import ChatView from "../../components/messages/ChatView";
+import Discover from "../../components/discover/Discover";
 import { motion } from "framer-motion";
 
 export default function Page() {
