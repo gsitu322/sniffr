@@ -73,7 +73,7 @@ export default function Discover() {
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     if (direction === "right") {
-      const willMatch = Math.random() < 0.6; // 60% chance to match
+      const willMatch = Math.random() < 0.75; // 75% chance to match
       if (!willMatch) {
         console.log("No match with " + dog.name + "! 💔");
         return;
@@ -83,6 +83,25 @@ export default function Discover() {
       console.log("Match with " + dog.name + "! 💕");
       const delay = Math.random() * 5000 + 1000;
 
+      const startMessage = Math.random() < 0.5; // 50% chance to match
+      const initialMsg = startMessage
+        ? [
+            {
+              id: Date.now().toString(),
+              content: [
+                "🦴 Woof woof! 🐕‍🦺 Arf arf! 🐾",
+                "🐾 Bark bark! 🦮 Woof woof! 🦴",
+                "🐕 Arf arf! 🦴 Woof woof! 🐾",
+                "🦮 Woof! 🐾 Bark bark! 🐕‍🦺",
+                "🐕‍🦺 Arf! 🦴 Woof woof! 🦮",
+              ][Math.floor(Math.random() * 5)],
+              senderId: "system",
+              timestamp: new Date().toISOString(),
+              read: false,
+            },
+          ]
+        : [];
+
       setTimeout(() => {
         // Create a new message thread
         const threadId = `user-${dog.id}`;
@@ -91,17 +110,11 @@ export default function Discover() {
             threadId,
             dogName: dog.name,
             dogImage: dog.image,
-            lastMessage: `You matched with ${dog.name}!`,
+            lastMessage: startMessage
+              ? initialMsg[0].content
+              : "Say something to start the conversation!",
             unreadCount: 1,
-            messages: [
-              {
-                id: Date.now().toString(),
-                content: `🎉 You matched with ${dog.name}!`,
-                senderId: "system",
-                timestamp: new Date().toISOString(),
-                read: false,
-              },
-            ],
+            messages: initialMsg,
           })
         );
 

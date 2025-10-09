@@ -35,7 +35,7 @@ export default function Sidebar() {
       {Object.values(threads).length === 0 && (
         <div className="text-center text-gray-500 py-4">No messages yet</div>
       )}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {Object.values(threads).map((thread) => (
           <motion.div
             key={thread.threadId}
