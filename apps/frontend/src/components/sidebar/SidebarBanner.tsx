@@ -21,7 +21,7 @@ export default function SidebarBanner() {
         className="w-16 h-16 object-cover rounded-full border-amber-400 border-2"
       />
       <div>
-        <h3 className="text-lg font-semibold">Find Your Match!</h3>
+        <h3 className="text-lg font-semibold">Find Your Pawfect Match!</h3>
         <p className="text-sm text-gray-500">
           Start swipping to find your doggo!
         </p>

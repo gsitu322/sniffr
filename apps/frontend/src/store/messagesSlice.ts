@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MessageState } from "@/app/type/messages";
-import { Message, MessageThread } from "@/app/type/messages";
+import { MessageState } from "@/types/messages";
+import { Message, MessageThread } from "@/types/messages";
 
 // Setup Initial State
 const initialState: MessageState = {

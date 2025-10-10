@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
-import { Dog } from "@/app/type/dog";
+import { Dog } from "@/types/dog";
 import { useAppDispatch } from "@/store/hooks";
 import { upsertThread } from "@/store/messagesSlice";
+import { getInitialMessage } from "@/lib/initialMessageUtil";
+import type { Message } from "@/types/messages";
 
 export default function Discover() {
   const dispatch = useAppDispatch();
@@ -58,6 +60,13 @@ export default function Discover() {
     setVisibleDogs(firstThree);
   }, [dogs]);
 
+  const playMatchSound = () => {
+    const audio = new Audio("/sounds/notification.mp3");
+    audio.play().catch((error) => {
+      console.error("Error playing match sound: ", error);
+    });
+  };
+
   const onSwipe = (direction: string, dog: any) => {
     console.log("You swiped: " + direction + " on " + dog.name);
 
@@ -66,30 +75,38 @@ export default function Discover() {
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     if (direction === "right") {
+      const willMatch = Math.random() < 0.75; // 75% chance to match
+      if (!willMatch) {
+        console.log("No match with " + dog.name + "! 💔");
+        return;
+      }
+
+      // If there's a match then wait 1-10 seconds before showing the match
       console.log("Match with " + dog.name + "! 💕");
+      const delay = Math.random() * 5000 + 1000;
 
-      // Create a new message thread
-      const threadId = `user-${dog.id}`; // You'll want to use actual user ID
-      dispatch(
-        upsertThread({
-          threadId,
-          dogName: dog.name,
-          dogImage: dog.image,
-          lastMessage: `You matched with ${dog.name}!`,
-          unreadCount: 0,
-          messages: [
-            {
-              id: Date.now().toString(),
-              content: `🎉 You matched with ${dog.name}!`,
-              senderId: "system",
-              timestamp: new Date().toISOString(),
-              read: true,
-            },
-          ],
-        })
-      );
+      const initialMsg = getInitialMessage() as Message[];
 
-      // TODO: Show match notification/animation
+      setTimeout(() => {
+        // Create a new message thread
+        const threadId = `user-${dog.id}`;
+        dispatch(
+          upsertThread({
+            threadId,
+            dogName: dog.name,
+            dogImage: dog.image,
+            lastMessage:
+              initialMsg && initialMsg.length > 0
+                ? initialMsg[0].content
+                : "Say something to start the conversation!",
+            unreadCount: 1,
+            messages: initialMsg,
+          })
+        );
+
+        playMatchSound();
+      }, delay);
+
       // TODO: Send match notification to backend
     }
   };
