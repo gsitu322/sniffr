@@ -1,28 +1,17 @@
 import SidebarHeader from "./SidebarHeader";
 import SidebarBanner from "./SidebarBanner";
 import MessagesListItem from "./MessagesListItem";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import { setActiveThread, markThreadAsRead } from "@/store/messagesSlice";
-import { setSelectedThread } from "@/store/uiSlice";
+import { useAppSelector } from "@/store/hooks";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
-  const dispatch = useAppDispatch();
+  const router = useRouter();
   const threads = useAppSelector((state) => state.messages.threads);
 
-  const handleMessageClick = (
-    threadId: string,
-    dogName: string,
-    imageUrl: string
-  ) => {
-    // Update UI to show messages view
-    dispatch(setSelectedThread({ dogName, imageUrl, message: "" }));
-
-    // Set active thread in messages state
-    dispatch(setActiveThread(threadId));
-
-    // Mark as read
-    dispatch(markThreadAsRead(threadId));
+  const handleMessageClick = (threadId: string) => {
+    // Navigate to the specific message thread
+    router.push(`/messages/${threadId}`);
   };
 
   return (
@@ -50,13 +39,7 @@ export default function Sidebar() {
               imageUrl={thread.dogImage}
               message={thread.lastMessage}
               unreadCount={thread.unreadCount}
-              onClick={() =>
-                handleMessageClick(
-                  thread.threadId,
-                  thread.dogName,
-                  thread.dogImage
-                )
-              }
+              onClick={() => handleMessageClick(thread.threadId)}
             />
           </motion.div>
         ))}

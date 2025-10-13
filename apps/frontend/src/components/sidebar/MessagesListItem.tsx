@@ -1,6 +1,3 @@
-import { useAppDispatch } from "@/store/hooks";
-import { setSelectedThread } from "@/store/uiSlice";
-
 export default function MessagesListItem({
   dogName,
   imageUrl,
@@ -14,10 +11,7 @@ export default function MessagesListItem({
   unreadCount: number;
   onClick: () => void;
 }) {
-  const dispatch = useAppDispatch();
-
   const handleClick = () => {
-    dispatch(setSelectedThread({ dogName, imageUrl, message }));
     onClick();
   };
 
@@ -32,9 +26,16 @@ export default function MessagesListItem({
         alt="find matches dog"
         className="w-16 h-16 object-cover rounded-full border-amber-400 border-2"
       />
-      <div>
-        <h3 className="text-lg font-semibold">{dogName}</h3>
-        <p className="text-sm text-gray-400">{message}</p>
+      <div className="flex-1">
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-semibold">{dogName}</h3>
+          {unreadCount > 0 && (
+            <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1 min-w-[20px] text-center">
+              {unreadCount}
+            </span>
+          )}
+        </div>
+        <p className="text-sm text-gray-400 truncate">{message}</p>
       </div>
     </div>
   );

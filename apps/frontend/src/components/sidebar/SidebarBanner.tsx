@@ -1,13 +1,12 @@
 "use client";
 
-import { useAppDispatch } from "@/store/hooks";
-import { setView } from "@/store/uiSlice";
+import { useRouter } from "next/navigation";
 
 export default function SidebarBanner() {
-  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleClick = () => {
-    dispatch(setView("discover"));
+    router.push("/discover");
   };
 
   return (

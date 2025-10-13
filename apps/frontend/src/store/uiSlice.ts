@@ -1,36 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type ViewType = "discover" | "messages";
-
-export interface MessageThread {
-  dogName: string;
-  imageUrl: string;
-  message: string;
-}
-
+// We can keep this for future UI state needs, but remove view switching
 interface UiState {
-  currentView: ViewType;
-  selectedThread: MessageThread | null;
+  // Add future UI state here as needed
+  sidebarCollapsed?: boolean;
 }
 
-const initialState: UiState = {
-  currentView: "discover",
-  selectedThread: null,
-};
+const initialState: UiState = {};
 
 const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    setView: (state, action: PayloadAction<ViewType>) => {
-      state.currentView = action.payload;
-    },
-    setSelectedThread: (state, action: PayloadAction<MessageThread | null>) => {
-      state.currentView = "messages";
-      state.selectedThread = action.payload;
+    // Add future UI actions here as needed
+    toggleSidebar: (state) => {
+      state.sidebarCollapsed = !state.sidebarCollapsed;
     },
   },
 });
 
-export const { setView, setSelectedThread } = uiSlice.actions;
+export const { toggleSidebar } = uiSlice.actions;
 export default uiSlice.reducer;
