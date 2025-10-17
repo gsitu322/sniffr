@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Rhodesian Ridgeback",
+    "age": 5,
+    "bio": "Bella is a lovely Rhodesian Ridgeback, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=1"
+  },
+  {
+    "id": 2,
+    "name": "Coco",
+    "sex": "F",
+    "breed": "Great Pyrenees",
+    "age": 3,
+    "bio": "Coco is a lovely Great Pyrenees, 3 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=2"
+  },
+  {
+    "id": 3,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Glen of Imaal Terrier",
+    "age": 8,
+    "bio": "Daisy is a lovely Glen of Imaal Terrier, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=3"
+  },
+  {
+    "id": 4,
+    "name": "Dixie",
+    "sex": "F",
+    "breed": "Shih Tzu",
+    "age": 4,
+    "bio": "Dixie is a lovely Shih Tzu, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=4"
+  },
+  {
+    "id": 5,
+    "name": "Ruby",
+    "sex": "F",
+    "breed": "Norfolk Terrier",
+    "age": 7,
+    "bio": "Ruby is a lovely Norfolk Terrier, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=5"
+  },
+  {
+    "id": 6,
+    "name": "Blue",
+    "sex": "M",
+    "breed": "Border Collie",
+    "age": 13,
+    "bio": "Blue is a lovely Border Collie, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=6"
+  },
+  {
+    "id": 7,
+    "name": "Apollo",
+    "sex": "M",
+    "breed": "Toy Fox Terrier",
+    "age": 13,
+    "bio": "Apollo is a lovely Toy Fox Terrier, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=7"
+  },
+  {
+    "id": 8,
+    "name": "Rusty",
+    "sex": "M",
+    "breed": "Boxer",
+    "age": 4,
+    "bio": "Rusty is a lovely Boxer, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=8"
+  },
+  {
+    "id": 9,
+    "name": "Lola",
+    "sex": "F",
+    "breed": "Australian Cattle Dog",
+    "age": 13,
+    "bio": "Lola is a lovely Australian Cattle Dog, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=9"
+  },
+  {
+    "id": 10,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "Belgian Sheepdog",
+    "age": 8,
+    "bio": "Scout is a lovely Belgian Sheepdog, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=10"
+  },
+  {
+    "id": 11,
+    "name": "Sophie",
+    "sex": "F",
+    "breed": "Samoyed",
+    "age": 6,
+    "bio": "Sophie is a lovely Samoyed, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=11"
+  },
+  {
+    "id": 12,
+    "name": "Ace",
+    "sex": "M",
+    "breed": "Husky",
+    "age": 7,
+    "bio": "Ace is a lovely Husky, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=12"
+  },
+  {
+    "id": 13,
+    "name": "Dexter",
+    "sex": "M",
+    "breed": "Pug",
+    "age": 13,
+    "bio": "Dexter is a lovely Pug, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=13"
+  },
+  {
+    "id": 14,
+    "name": "Rex",
+    "sex": "M",
+    "breed": "English Toy Spaniel",
+    "age": 1,
+    "bio": "Rex is a lovely English Toy Spaniel, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=14"
+  },
+  {
+    "id": 15,
+    "name": "Buster",
+    "sex": "M",
+    "breed": "Australian Kelpie",
+    "age": 4,
+    "bio": "Buster is a lovely Australian Kelpie, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=15"
+  },
+  {
+    "id": 16,
+    "name": "Coco",
+    "sex": "F",
+    "breed": "German Pointer",
+    "age": 3,
+    "bio": "Coco is a lovely German Pointer, 3 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=16"
+  },
+  {
+    "id": 17,
+    "name": "Roxy",
+    "sex": "F",
+    "breed": "Borzoi",
+    "age": 15,
+    "bio": "Roxy is a lovely Borzoi, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=17"
+  },
+  {
+    "id": 18,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Toy Fox Terrier",
+    "age": 11,
+    "bio": "Bella is a lovely Toy Fox Terrier, 11 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=18"
+  },
+  {
+    "id": 19,
+    "name": "Toby",
+    "sex": "M",
+    "breed": "Beagle",
+    "age": 4,
+    "bio": "Toby is a lovely Beagle, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=19"
+  },
+  {
+    "id": 20,
+    "name": "Apollo",
+    "sex": "M",
+    "breed": "Black Russian Terrier",
+    "age": 8,
+    "bio": "Apollo is a lovely Black Russian Terrier, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=20"
+  },
+  {
+    "id": 21,
+    "name": "Molly",
+    "sex": "F",
+    "breed": "Maltese",
+    "age": 12,
+    "bio": "Molly is a lovely Maltese, 12 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=21"
+  },
+  {
+    "id": 22,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Alaskan Malamute",
+    "age": 6,
+    "bio": "Daisy is a lovely Alaskan Malamute, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=22"
+  },
+  {
+    "id": 23,
+    "name": "Hunter",
+    "sex": "M",
+    "breed": "Jack Russell Terrier",
+    "age": 10,
+    "bio": "Hunter is a lovely Jack Russell Terrier, 10 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=23"
+  },
+  {
+    "id": 24,
+    "name": "Buster",
+    "sex": "M",
+    "breed": "Alaskan Malamute",
+    "age": 10,
+    "bio": "Buster is a lovely Alaskan Malamute, 10 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=24"
+  },
+  {
+    "id": 25,
+    "name": "Rex",
+    "sex": "M",
+    "breed": "Chesapeake Bay Retriever",
+    "age": 6,
+    "bio": "Rex is a lovely Chesapeake Bay Retriever, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=25"
+  },
+  {
+    "id": 26,
+    "name": "Rocco",
+    "sex": "M",
+    "breed": "Shiba Inu",
+    "age": 8,
+    "bio": "Rocco is a lovely Shiba Inu, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=26"
+  },
+  {
+    "id": 27,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Keeshond",
+    "age": 2,
+    "bio": "Daisy is a lovely Keeshond, 2 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=27"
+  },
+  {
+    "id": 28,
+    "name": "Jake",
+    "sex": "M",
+    "breed": "Beagle",
+    "age": 8,
+    "bio": "Jake is a lovely Beagle, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=28"
+  },
+  {
+    "id": 29,
+    "name": "Molly",
+    "sex": "F",
+    "breed": "Husky",
+    "age": 7,
+    "bio": "Molly is a lovely Husky, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=29"
+  },
+  {
+    "id": 30,
+    "name": "Rocky",
+    "sex": "M",
+    "breed": "Irish Wolfhound",
+    "age": 6,
+    "bio": "Rocky is a lovely Irish Wolfhound, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=30"
+  },
+  {
+    "id": 31,
+    "name": "Stella",
+    "sex": "F",
+    "breed": "Belgian Sheepdog",
+    "age": 2,
+    "bio": "Stella is a lovely Belgian Sheepdog, 2 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=31"
+  },
+  {
+    "id": 32,
+    "name": "Jackson",
+    "sex": "M",
+    "breed": "Norwich Terrier",
+    "age": 5,
+    "bio": "Jackson is a lovely Norwich Terrier, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=32"
+  },
+  {
+    "id": 33,
+    "name": "Zeus",
+    "sex": "M",
+    "breed": "Mastiff",
+    "age": 15,
+    "bio": "Zeus is a lovely Mastiff, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=33"
+  },
+  {
+    "id": 34,
+    "name": "Baxter",
+    "sex": "M",
+    "breed": "American Eskimo",
+    "age": 3,
+    "bio": "Baxter is a lovely American Eskimo, 3 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=34"
+  },
+  {
+    "id": 35,
+    "name": "Zoey",
+    "sex": "F",
+    "breed": "Australian Shepherd",
+    "age": 13,
+    "bio": "Zoey is a lovely Australian Shepherd, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=35"
+  },
+  {
+    "id": 36,
+    "name": "Hunter",
+    "sex": "M",
+    "breed": "Shiba Inu",
+    "age": 12,
+    "bio": "Hunter is a lovely Shiba Inu, 12 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=36"
+  },
+  {
+    "id": 37,
+    "name": "Stella",
+    "sex": "F",
+    "breed": "Coonhound",
+    "age": 13,
+    "bio": "Stella is a lovely Coonhound, 13 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=37"
+  },
+  {
+    "id": 38,
+    "name": "Buddy",
+    "sex": "M",
+    "breed": "Dalmatian",
+    "age": 11,
+    "bio": "Buddy is a lovely Dalmatian, 11 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=38"
+  },
+  {
+    "id": 39,
+    "name": "Max",
+    "sex": "M",
+    "breed": "Pointer",
+    "age": 15,
+    "bio": "Max is a lovely Pointer, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=39"
+  },
+  {
+    "id": 40,
+    "name": "Gunner",
+    "sex": "M",
+    "breed": "Italian Greyhound",
+    "age": 7,
+    "bio": "Gunner is a lovely Italian Greyhound, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=40"
+  },
+  {
+    "id": 41,
+    "name": "Molly",
+    "sex": "F",
+    "breed": "German Pointer",
+    "age": 10,
+    "bio": "Molly is a lovely German Pointer, 10 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=41"
+  },
+  {
+    "id": 42,
+    "name": "Boomer",
+    "sex": "M",
+    "breed": "Toy Fox Terrier",
+    "age": 8,
+    "bio": "Boomer is a lovely Toy Fox Terrier, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=42"
+  },
+  {
+    "id": 43,
+    "name": "Rocky",
+    "sex": "M",
+    "breed": "Basset Hound",
+    "age": 6,
+    "bio": "Rocky is a lovely Basset Hound, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=43"
+  },
+  {
+    "id": 44,
+    "name": "Rex",
+    "sex": "M",
+    "breed": "Coton de Tulear",
+    "age": 4,
+    "bio": "Rex is a lovely Coton de Tulear, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=44"
+  },
+  {
+    "id": 45,
+    "name": "Blue",
+    "sex": "M",
+    "breed": "Husky",
+    "age": 4,
+    "bio": "Blue is a lovely Husky, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=45"
+  },
+  {
+    "id": 46,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Pointer",
+    "age": 6,
+    "bio": "Daisy is a lovely Pointer, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=46"
+  },
+  {
+    "id": 47,
+    "name": "Dixie",
+    "sex": "F",
+    "breed": "Cane Corso",
+    "age": 5,
+    "bio": "Dixie is a lovely Cane Corso, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=47"
+  },
+  {
+    "id": 48,
+    "name": "Gus",
+    "sex": "M",
+    "breed": "Chesapeake Bay Retriever",
+    "age": 8,
+    "bio": "Gus is a lovely Chesapeake Bay Retriever, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=48"
+  },
+  {
+    "id": 49,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "German Pointer",
+    "age": 12,
+    "bio": "Scout is a lovely German Pointer, 12 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=49"
+  },
+  {
+    "id": 50,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Samoyed",
+    "age": 5,
+    "bio": "Daisy is a lovely Samoyed, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=50"
+  },
+  {
+    "id": 51,
+    "name": "Gracie",
+    "sex": "F",
+    "breed": "Miniature Schnauzer",
+    "age": 14,
+    "bio": "Gracie is a lovely Miniature Schnauzer, 14 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=51"
+  },
+  {
+    "id": 52,
+    "name": "Cleo",
+    "sex": "F",
+    "breed": "Labrador Retriever",
+    "age": 4,
+    "bio": "Cleo is a lovely Labrador Retriever, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=52"
+  },
+  {
+    "id": 53,
+    "name": "Buster",
+    "sex": "M",
+    "breed": "Soft Coated Wheaten Terrier",
+    "age": 6,
+    "bio": "Buster is a lovely Soft Coated Wheaten Terrier, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=53"
+  },
+  {
+    "id": 54,
+    "name": "Sasha",
+    "sex": "F",
+    "breed": "Pointer",
+    "age": 2,
+    "bio": "Sasha is a lovely Pointer, 2 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=54"
+  },
+  {
+    "id": 55,
+    "name": "Zeus",
+    "sex": "M",
+    "breed": "Japanese Chin",
+    "age": 15,
+    "bio": "Zeus is a lovely Japanese Chin, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=55"
+  },
+  {
+    "id": 56,
+    "name": "Toby",
+    "sex": "M",
+    "breed": "Coonhound",
+    "age": 10,
+    "bio": "Toby is a lovely Coonhound, 10 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=56"
+  },
+  {
+    "id": 57,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Norwich Terrier",
+    "age": 7,
+    "bio": "Bella is a lovely Norwich Terrier, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=57"
+  },
+  {
+    "id": 58,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Pomeranian",
+    "age": 14,
+    "bio": "Daisy is a lovely Pomeranian, 14 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=58"
+  },
+  {
+    "id": 59,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "Golden Retriever",
+    "age": 7,
+    "bio": "Scout is a lovely Golden Retriever, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=59"
+  },
+  {
+    "id": 60,
+    "name": "Thor",
+    "sex": "M",
+    "breed": "Flat-Coated Retriever",
+    "age": 15,
+    "bio": "Thor is a lovely Flat-Coated Retriever, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=60"
+  },
+  {
+    "id": 61,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "English Setter",
+    "age": 5,
+    "bio": "Scout is a lovely English Setter, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=61"
+  },
+  {
+    "id": 62,
+    "name": "Ruby",
+    "sex": "F",
+    "breed": "Leonberger",
+    "age": 7,
+    "bio": "Ruby is a lovely Leonberger, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=62"
+  },
+  {
+    "id": 63,
+    "name": "Roxy",
+    "sex": "F",
+    "breed": "Norwich Terrier",
+    "age": 7,
+    "bio": "Roxy is a lovely Norwich Terrier, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=63"
+  },
+  {
+    "id": 64,
+    "name": "Boomer",
+    "sex": "M",
+    "breed": "Toy Fox Terrier",
+    "age": 1,
+    "bio": "Boomer is a lovely Toy Fox Terrier, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=64"
+  },
+  {
+    "id": 65,
+    "name": "Tucker",
+    "sex": "M",
+    "breed": "Irish Terrier",
+    "age": 6,
+    "bio": "Tucker is a lovely Irish Terrier, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=65"
+  },
+  {
+    "id": 66,
+    "name": "Gracie",
+    "sex": "F",
+    "breed": "Doberman",
+    "age": 7,
+    "bio": "Gracie is a lovely Doberman, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=66"
+  },
+  {
+    "id": 67,
+    "name": "Blue",
+    "sex": "M",
+    "breed": "Toy Poodle",
+    "age": 2,
+    "bio": "Blue is a lovely Toy Poodle, 2 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=67"
+  },
+  {
+    "id": 68,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Irish Terrier",
+    "age": 3,
+    "bio": "Bella is a lovely Irish Terrier, 3 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=68"
+  },
+  {
+    "id": 69,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Cavalier King Charles",
+    "age": 8,
+    "bio": "Daisy is a lovely Cavalier King Charles, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=69"
+  },
+  {
+    "id": 70,
+    "name": "Hunter",
+    "sex": "M",
+    "breed": "Cocker Spaniel",
+    "age": 1,
+    "bio": "Hunter is a lovely Cocker Spaniel, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=70"
+  },
+  {
+    "id": 71,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "Great Dane",
+    "age": 5,
+    "bio": "Scout is a lovely Great Dane, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=71"
+  },
+  {
+    "id": 72,
+    "name": "Ace",
+    "sex": "M",
+    "breed": "Soft Coated Wheaten Terrier",
+    "age": 7,
+    "bio": "Ace is a lovely Soft Coated Wheaten Terrier, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=72"
+  },
+  {
+    "id": 73,
+    "name": "Tank",
+    "sex": "M",
+    "breed": "English Foxhound",
+    "age": 6,
+    "bio": "Tank is a lovely English Foxhound, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=73"
+  },
+  {
+    "id": 74,
+    "name": "Gunner",
+    "sex": "M",
+    "breed": "Dogo Argentino",
+    "age": 4,
+    "bio": "Gunner is a lovely Dogo Argentino, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=74"
+  },
+  {
+    "id": 75,
+    "name": "Lola",
+    "sex": "F",
+    "breed": "Collie",
+    "age": 9,
+    "bio": "Lola is a lovely Collie, 9 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=75"
+  },
+  {
+    "id": 76,
+    "name": "Mia",
+    "sex": "F",
+    "breed": "Samoyed",
+    "age": 6,
+    "bio": "Mia is a lovely Samoyed, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=76"
+  },
+  {
+    "id": 77,
+    "name": "Boomer",
+    "sex": "M",
+    "breed": "Collie",
+    "age": 9,
+    "bio": "Boomer is a lovely Collie, 9 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=77"
+  },
+  {
+    "id": 78,
+    "name": "Zoey",
+    "sex": "F",
+    "breed": "Cardigan Welsh Corgi",
+    "age": 1,
+    "bio": "Zoey is a lovely Cardigan Welsh Corgi, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=78"
+  },
+  {
+    "id": 79,
+    "name": "Hunter",
+    "sex": "M",
+    "breed": "Siberian Husky",
+    "age": 5,
+    "bio": "Hunter is a lovely Siberian Husky, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=79"
+  },
+  {
+    "id": 80,
+    "name": "Riley",
+    "sex": "M",
+    "breed": "English Setter",
+    "age": 6,
+    "bio": "Riley is a lovely English Setter, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=80"
+  },
+  {
+    "id": 81,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Dalmatian",
+    "age": 4,
+    "bio": "Bella is a lovely Dalmatian, 4 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=81"
+  },
+  {
+    "id": 82,
+    "name": "Scout",
+    "sex": "M",
+    "breed": "Chihuahua",
+    "age": 8,
+    "bio": "Scout is a lovely Chihuahua, 8 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=82"
+  },
+  {
+    "id": 83,
+    "name": "Dixie",
+    "sex": "F",
+    "breed": "Shiba Inu",
+    "age": 5,
+    "bio": "Dixie is a lovely Shiba Inu, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=83"
+  },
+  {
+    "id": 84,
+    "name": "Lucy",
+    "sex": "F",
+    "breed": "English Springer Spaniel",
+    "age": 11,
+    "bio": "Lucy is a lovely English Springer Spaniel, 11 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=84"
+  },
+  {
+    "id": 85,
+    "name": "Ace",
+    "sex": "M",
+    "breed": "Cocker Spaniel",
+    "age": 15,
+    "bio": "Ace is a lovely Cocker Spaniel, 15 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=85"
+  },
+  {
+    "id": 86,
+    "name": "Lily",
+    "sex": "F",
+    "breed": "Saint Bernard",
+    "age": 1,
+    "bio": "Lily is a lovely Saint Bernard, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=86"
+  },
+  {
+    "id": 87,
+    "name": "Bella",
+    "sex": "F",
+    "breed": "Scottish Deerhound",
+    "age": 9,
+    "bio": "Bella is a lovely Scottish Deerhound, 9 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=87"
+  },
+  {
+    "id": 88,
+    "name": "Blue",
+    "sex": "M",
+    "breed": "Pointer",
+    "age": 5,
+    "bio": "Blue is a lovely Pointer, 5 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=88"
+  },
+  {
+    "id": 89,
+    "name": "Chloe",
+    "sex": "F",
+    "breed": "Papillon",
+    "age": 1,
+    "bio": "Chloe is a lovely Papillon, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=89"
+  },
+  {
+    "id": 90,
+    "name": "Finn",
+    "sex": "M",
+    "breed": "English Foxhound",
+    "age": 1,
+    "bio": "Finn is a lovely English Foxhound, 1 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=90"
+  },
+  {
+    "id": 91,
+    "name": "Jackson",
+    "sex": "M",
+    "breed": "Coton de Tulear",
+    "age": 7,
+    "bio": "Jackson is a lovely Coton de Tulear, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=91"
+  },
+  {
+    "id": 92,
+    "name": "Hunter",
+    "sex": "M",
+    "breed": "Samoyed",
+    "age": 12,
+    "bio": "Hunter is a lovely Samoyed, 12 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=92"
+  },
+  {
+    "id": 93,
+    "name": "Charlie",
+    "sex": "M",
+    "breed": "Golden Retriever",
+    "age": 14,
+    "bio": "Charlie is a lovely Golden Retriever, 14 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=93"
+  },
+  {
+    "id": 94,
+    "name": "Bandit",
+    "sex": "M",
+    "breed": "Whippet",
+    "age": 9,
+    "bio": "Bandit is a lovely Whippet, 9 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=94"
+  },
+  {
+    "id": 95,
+    "name": "Daisy",
+    "sex": "F",
+    "breed": "Tibetan Spaniel",
+    "age": 14,
+    "bio": "Daisy is a lovely Tibetan Spaniel, 14 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=95"
+  },
+  {
+    "id": 96,
+    "name": "Moose",
+    "sex": "M",
+    "breed": "Shiba Inu",
+    "age": 6,
+    "bio": "Moose is a lovely Shiba Inu, 6 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=96"
+  },
+  {
+    "id": 97,
+    "name": "Rocky",
+    "sex": "M",
+    "breed": "Rottweiler",
+    "age": 10,
+    "bio": "Rocky is a lovely Rottweiler, 10 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=97"
+  },
+  {
+    "id": 98,
+    "name": "Boomer",
+    "sex": "M",
+    "breed": "Dogo Argentino",
+    "age": 7,
+    "bio": "Boomer is a lovely Dogo Argentino, 7 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=98"
+  },
+  {
+    "id": 99,
+    "name": "Jake",
+    "sex": "M",
+    "breed": "Scottish Deerhound",
+    "age": 2,
+    "bio": "Jake is a lovely Scottish Deerhound, 2 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=99"
+  },
+  {
+    "id": 100,
+    "name": "Rusty",
+    "sex": "M",
+    "breed": "Norwegian Elkhound",
+    "age": 3,
+    "bio": "Rusty is a lovely Norwegian Elkhound, 3 years old, full of personality.",
+    "image": "https://placedog.net/400/400?id=100"
+  }
+]

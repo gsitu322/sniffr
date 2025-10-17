@@ -9,5 +9,23 @@ export class Dog {
   name: string;
 
   @Column()
+  sex: string;
+
+  @Column()
   breed: string;
+
+  @Column()
+  age: number;
+
+  @Column()
+  bio: string;
+
+  @Column()
+  image: string;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  updatedAt: Date;
 }
