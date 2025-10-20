@@ -13,6 +13,18 @@ datasource db {
   url      = "file:./database.sqlite"
 }
 
+model User {
+  id              Int            @id @default(autoincrement())
+  name            String
+  email           String         @unique
+  password        String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  MessageThread   MessageThread? @relation(fields: [messageThreadId], references: [id])
+  messageThreadId Int?
+  messages        Message[]
+}
+
 model Dog {
   id        Int      @id @default(autoincrement())
   name      String
@@ -24,4 +36,25 @@ model Dog {
   location  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id              Int            @id @default(autoincrement())
+  content         String
+  senderId        Int
+  receiverId      Int
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  MessageThread   MessageThread? @relation(fields: [messageThreadId], references: [id])
+  messageThreadId Int?
+  User            User?          @relation(fields: [userId], references: [id])
+  userId          Int?
+}
+
+model MessageThread {
+  id           Int       @id @default(autoincrement())
+  participants User[]
+  messages     Message[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }
