@@ -1,12 +1,15 @@
 import { Controller, Get, Query } from "@nestjs/common";
 import { DogsService } from "./dogs.service";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiTags, ApiOperation, ApiQuery, ApiResponse } from "@nestjs/swagger";
 
 @ApiTags("Dogs")
 @Controller("dogs")
 export class DogsController {
   constructor(private readonly dogsService: DogsService) {}
 
+  @ApiOperation({ summary: "Get list of dogs" })
+  @ApiQuery({ name: "limit", type: Number, required: false, example: 10 })
+  @ApiQuery({ name: "offset", type: Number, required: false, example: 0 })
   @Get()
   async getDogs(
     @Query("limit") limit?: string,
