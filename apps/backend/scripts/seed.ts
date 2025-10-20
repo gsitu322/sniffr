@@ -1,4 +1,4 @@
-import { PrismaClient } from "../generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -41,13 +41,13 @@ async function seedDogs() {
       breed: dog.breed,
       age: dog.age,
       bio: dog.bio,
-      images: [dog.image], // Convert single image to array
+      sex: dog.sex,
+      image: dog.image,
     }));
 
     // Insert dogs into database
     const result = await prisma.dog.createMany({
       data: dogsToCreate,
-      skipDuplicates: true, // Skip if duplicates exist
     });
 
     console.log(

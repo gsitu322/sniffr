@@ -6,21 +6,21 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
 }
 
 model Dog {
-  id        String   @id @default(cuid())
+  id        Int      @id @default(autoincrement())
   name      String
+  sex       String
   breed     String
   age       Int
   bio       String
-  images    String[]
+  image     String
   location  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

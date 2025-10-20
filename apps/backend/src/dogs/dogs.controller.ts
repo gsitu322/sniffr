@@ -1,14 +1,19 @@
-import { Controller, Get, Inject } from "@nestjs/common";
-import { DataSource } from "typeorm";
-import { Dog } from "./dogs.entity";
+import { Controller, Get, Query } from "@nestjs/common";
+import { DogsService } from "./dogs.service";
 
 @Controller("dogs")
 export class DogsController {
-  constructor(@Inject("DATA_SOURCE") private dataSource: DataSource) {}
+  constructor(private readonly dogsService: DogsService) {}
 
   @Get()
-  async getDogs(): Promise<Dog[]> {
-    const dogs = await this.dataSource.getRepository(Dog).find({});
-    return dogs;
+  async getDogs(
+    @Query("limit") limit?: string,
+    @Query("offset") offset?: string
+  ) {
+    const limitNum = limit ? parseInt(limit, 10) : 10;
+    const offsetNum = offset ? parseInt(offset, 10) : 0;
+
+    const result = await this.dogsService.getDogs(limitNum, offsetNum);
+    return result;
   }
 }

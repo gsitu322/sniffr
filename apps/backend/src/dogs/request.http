@@ -1,2 +1,2 @@
 ### Get dogs
-GET http://localhost:3000/dogs
+GET http://localhost:3000/dogs/all
