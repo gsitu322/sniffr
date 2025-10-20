@@ -6,10 +6,11 @@ import { MessagesModule } from "./messages/messages.module";
 import { UsersModule } from "./users/users.module";
 import { MatchesModule } from "./matches/matches.module";
 import { PrismaService } from "./prisma/prisma.service";
+import { SwipesModule } from './swipes/swipes.module';
 
 @Global()
 @Module({
-  imports: [DogsModule, MessagesModule, UsersModule, MatchesModule],
+  imports: [DogsModule, MessagesModule, UsersModule, MatchesModule, SwipesModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
   exports: [PrismaService],

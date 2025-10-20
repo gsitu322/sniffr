@@ -1,9 +1,19 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { ValidationPipe } from "@nestjs/common";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Enable global validation pipes
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    })
+  );
 
   const config = new DocumentBuilder()
     .setTitle("Sniffr API")
@@ -12,6 +22,7 @@ async function bootstrap() {
     .addTag("dogs", "Dog management endpoints")
     .addTag("users", "User management endpoints")
     .addTag("matches", "Match management endpoints")
+    .addTag("swipes", "Swipe management endpoints")
     .addTag("messages", "Message management endpoints")
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
