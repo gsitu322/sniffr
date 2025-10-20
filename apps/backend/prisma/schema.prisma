@@ -13,6 +13,11 @@ datasource db {
   url      = "file:./database.sqlite"
 }
 
+enum SwipeStatus {
+  ACCEPTED
+  REJECTED
+}
+
 model User {
   id              Int            @id @default(autoincrement())
   name            String
@@ -23,6 +28,7 @@ model User {
   MessageThread   MessageThread? @relation(fields: [messageThreadId], references: [id])
   messageThreadId Int?
   messages        Message[]
+  Swipe           Swipe[]
 }
 
 model Dog {
@@ -36,6 +42,7 @@ model Dog {
   location  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Swipe     Swipe[]
 }
 
 model Message {
@@ -57,4 +64,17 @@ model MessageThread {
   messages     Message[]
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+}
+
+model Swipe {
+  id        Int         @id @default(autoincrement())
+  dogId     Int
+  userId    Int
+  status    SwipeStatus
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Dog       Dog         @relation(fields: [dogId], references: [id])
+  User      User        @relation(fields: [userId], references: [id])
+
+  @@unique([dogId, userId])
 }

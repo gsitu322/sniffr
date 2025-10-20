@@ -33,14 +33,14 @@ export class DogsService {
     return dog;
   }
 
-  async getDogById(id: string) {
+  async getDogById(id: number) {
     return this.prisma.dog.findUnique({
       where: { id },
     });
   }
 
   async updateDog(
-    id: string,
+    id: number,
     dogData: Partial<{
       name: string;
       sex: string;
@@ -57,7 +57,7 @@ export class DogsService {
     });
   }
 
-  async deleteDog(id: string) {
+  async deleteDog(id: number) {
     return this.prisma.dog.delete({
       where: { id },
     });

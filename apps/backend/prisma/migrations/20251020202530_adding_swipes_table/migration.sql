@@ -1,0 +1,13 @@
+-- CreateTable
+CREATE TABLE "Swipe" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "dogId" INTEGER NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Swipe_dogId_fkey" FOREIGN KEY ("dogId") REFERENCES "Dog" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Swipe_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Swipe_dogId_userId_key" ON "Swipe"("dogId", "userId");

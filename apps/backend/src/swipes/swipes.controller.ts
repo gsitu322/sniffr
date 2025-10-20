@@ -12,13 +12,13 @@ export class SwipesController {
   @ApiOperation({ summary: "Accept a dog swipe" })
   @ApiResponse({ status: 200, description: "Dog swipe accepted successfully" })
   accept(@Body() body: AcceptSwipeDto) {
-    return this.swipesService.accept(body.dogId);
+    return this.swipesService.accept(body.dogId, 1);
   }
 
   @Post("reject")
   @ApiOperation({ summary: "Reject a dog swipe" })
   @ApiResponse({ status: 200, description: "Dog swipe rejected successfully" })
   reject(@Body() body: RejectSwipeDto) {
-    return this.swipesService.reject(body.dogId);
+    return this.swipesService.reject(body.dogId, 1);
   }
 }
