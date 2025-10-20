@@ -1,17 +1,25 @@
-import { IsString, IsNotEmpty } from "class-validator";
+import { IsEnum, IsNotEmpty, IsInt } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { SwipeStatus } from "@prisma/client";
+import { Transform } from "class-transformer";
 
 export class SwipeDto {
   @ApiProperty({
     description: "The ID of the dog being swiped on",
-    example: "123",
-    type: String,
+    example: 123,
+    type: Number,
   })
-  @IsString()
+  @Transform(({ value }) => parseInt(value))
+  @IsInt()
   @IsNotEmpty()
-  dogId: string;
+  dogId: number;
+
+  @ApiProperty({
+    description: "The status of the swipe",
+    example: SwipeStatus.ACCEPTED,
+    enum: SwipeStatus,
+  })
+  @IsEnum(SwipeStatus)
+  @IsNotEmpty()
+  status: SwipeStatus;
 }
-
-export class AcceptSwipeDto extends SwipeDto {}
-
-export class RejectSwipeDto extends SwipeDto {}
