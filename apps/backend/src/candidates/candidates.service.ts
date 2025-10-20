@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
+import { SwipeStatus } from "@prisma/client";
 
 @Injectable()
 export class CandidatesService {
@@ -16,6 +17,21 @@ export class CandidatesService {
         },
       },
       take: limit,
+    });
+
+    return candidates;
+  }
+
+  async getCandidatesByStatus(userId: number, status: SwipeStatus) {
+    const candidates = await this.prisma.dog.findMany({
+      where: {
+        Swipe: {
+          some: {
+            userId: userId,
+            status: status,
+          },
+        },
+      },
     });
 
     return candidates;
