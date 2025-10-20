@@ -1,8 +1,23 @@
 import { Injectable } from "@nestjs/common";
+import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
 export class CandidatesService {
-  async getCandidates(limit: number = 10) {
-    // Do a database lookup for dogs that the user has not swiped on yet.
+  constructor(private prisma: PrismaService) {}
+
+  async getCandidates(userId: number, limit: number = 10) {
+    // Get dogs that the user hasn't swiped on yet
+    const candidates = await this.prisma.dog.findMany({
+      where: {
+        Swipe: {
+          none: {
+            userId: userId,
+          },
+        },
+      },
+      take: limit,
+    });
+
+    return candidates;
   }
 }

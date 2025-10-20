@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Query, Body } from "@nestjs/common";
-import { CandidatesService } from "./candidates.service";
+import { Controller, Get } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
+import { CandidatesService } from "./candidates.service";
 
 @ApiTags("Candidates")
 @Controller("candidates")
@@ -10,7 +10,7 @@ export class CandidatesController {
   // Get potential matches (candidates)
   @Get()
   async getCandidates() {
-    const result = await this.candidatesService.getCandidates();
+    const result = await this.candidatesService.getCandidates(1);
     return result;
   }
 }
