@@ -19,11 +19,6 @@ async function bootstrap() {
     .setTitle("Sniffr API")
     .setDescription("The Sniffr API for dog matching and messaging")
     .setVersion("1.0")
-    .addTag("dogs", "Dog management endpoints")
-    .addTag("users", "User management endpoints")
-    .addTag("matches", "Match management endpoints")
-    .addTag("swipes", "Swipe management endpoints")
-    .addTag("messages", "Message management endpoints")
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("api", app, documentFactory);
