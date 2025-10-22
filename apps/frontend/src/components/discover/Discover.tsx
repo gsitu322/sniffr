@@ -24,8 +24,10 @@ export default function Discover() {
 
     try {
       console.log("Fetching dogs");
-      const data = await fetch(`/api/dogs?limit=20&offset=${offset}`);
+      const data = await fetch("/api/candidates");
       const newDogs = await data.json();
+
+      console.log("newDogs: ", newDogs);
 
       // Add new dogs to the END for sequential order
       setDogs((prevDogs) => [...prevDogs, ...newDogs]);
@@ -73,6 +75,20 @@ export default function Discover() {
     // Remove the swiped dog from the BEGINNING (sequential order)
     setDogs((prevDogs) => prevDogs.slice(1));
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
+
+    /** TODO: Change to use consts */
+    const status = direction === "right" ? "ACCEPTED" : "REJECTED";
+
+    fetch("/api/swipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        status,
+        dogId: dog.id,
+      }),
+    });
 
     if (direction === "right") {
       const willMatch = Math.random() < 0.75; // 75% chance to match
@@ -140,7 +156,7 @@ export default function Discover() {
               <p className="text-gray-600">
                 {dog.breed} • {dog.age} years old
               </p>
-              <p className="mt-2 text-gray-700">{dog.bio}</p>
+              <p className="mt-2 text-gray-700 line-clamp-1">{dog.bio}</p>
             </div>
           </TinderCard>
         ))}
