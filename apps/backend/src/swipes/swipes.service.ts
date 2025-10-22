@@ -15,6 +15,9 @@ export class SwipesService {
     });
 
     // Create an accept swipe in the database with userId and dogId
-    return { success: true, message: `Dog ${data.status} logged successfully` };
+    return {
+      success: true,
+      message: `Dog ${data.userStatus} logged successfully`,
+    };
   }
 }

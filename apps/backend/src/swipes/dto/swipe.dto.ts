@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsInt } from "class-validator";
+import { IsEnum, IsNotEmpty, IsInt, IsOptional } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { SwipeStatus } from "@prisma/client";
 import { Transform } from "class-transformer";
@@ -15,11 +15,11 @@ export class SwipeDto {
   dogId: number;
 
   @ApiProperty({
-    description: "The status of the swipe",
+    description: "The status of the User's swipe",
     example: SwipeStatus.ACCEPTED,
     enum: SwipeStatus,
   })
   @IsEnum(SwipeStatus)
   @IsNotEmpty()
-  status: SwipeStatus;
+  userStatus: SwipeStatus;
 }

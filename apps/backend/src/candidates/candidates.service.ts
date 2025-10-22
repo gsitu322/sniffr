@@ -28,7 +28,7 @@ export class CandidatesService {
         Swipe: {
           some: {
             userId: userId,
-            status: status,
+            userStatus: status,
           },
         },
       },

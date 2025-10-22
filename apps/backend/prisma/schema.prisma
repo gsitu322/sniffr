@@ -67,14 +67,15 @@ model MessageThread {
 }
 
 model Swipe {
-  id        Int         @id @default(autoincrement())
-  dogId     Int
-  userId    Int
-  status    SwipeStatus
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  Dog       Dog         @relation(fields: [dogId], references: [id])
-  User      User        @relation(fields: [userId], references: [id])
+  id         Int          @id @default(autoincrement())
+  dogId      Int
+  userId     Int
+  dogStatus  SwipeStatus?
+  userStatus SwipeStatus
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Dog        Dog          @relation(fields: [dogId], references: [id])
+  User       User         @relation(fields: [userId], references: [id])
 
   @@unique([dogId, userId])
 }
