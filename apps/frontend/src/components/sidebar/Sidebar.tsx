@@ -5,6 +5,7 @@ import { useAppSelector } from "@/store/hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import MessagesRealtime from "../messages/MessagesRealtime";
+import { useEffect } from "react";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -14,6 +15,17 @@ export default function Sidebar() {
     // Navigate to the specific message thread
     router.push(`/messages/${threadId}`);
   };
+
+  useEffect(() => {
+    fetch("/api/threads?userId=1")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("threads from backend", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching threads:", error);
+      });
+  });
 
   return (
     <aside className="w-full sm:w-80 sm:min-w-[400px] sm:max-w-md  dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto">

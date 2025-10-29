@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const backendUrl = process.env.BACKEND_URL || "http://localhost:3001";
+  const backendUrl = process.env.BACKEND_URL;
 
   try {
     // get the body of the response
