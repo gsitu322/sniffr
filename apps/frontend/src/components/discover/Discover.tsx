@@ -69,7 +69,7 @@ export default function Discover() {
     });
   };
 
-  const onSwipe = (direction: string, dog: any) => {
+  const onSwipe = async (direction: string, dog: any) => {
     console.log("You swiped: " + direction + " on " + dog.name);
 
     // Remove the swiped dog from the BEGINNING (sequential order)
@@ -77,15 +77,15 @@ export default function Discover() {
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     /** TODO: Change to use consts */
-    const status = direction === "right" ? "ACCEPTED" : "REJECTED";
+    const userStatus = direction === "right" ? "ACCEPTED" : "REJECTED";
 
-    fetch("/api/swipes", {
+    await fetch("/api/swipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        status,
+        userStatus,
         dogId: dog.id,
       }),
     });
