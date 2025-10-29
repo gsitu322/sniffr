@@ -9,7 +9,7 @@ import { Server } from 'socket.io'
   },
 })
 @Injectable()
-export class MessagesGateway {
+export class ThreadsGateway {
   @WebSocketServer()
   server: Server;
 

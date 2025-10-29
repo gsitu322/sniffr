@@ -1,22 +1,61 @@
 import { Injectable } from "@nestjs/common";
-import { CreateMessageDto } from "./dto/sendMessage.dto";
+import { CreateMessageDto } from "../threads/dto/sendMessage.dto";
 import { PrismaService } from "../prisma/prisma.service";
-import { MessagesGateway } from "./messages.gateway";
+import { ThreadsGateway } from "./threads.gateway";
 
 @Injectable()
-export class MessagesService {
+export class ThreadsService {
   constructor(
     private prisma: PrismaService,
-    private messagesGateway: MessagesGateway
+    private threadsGateway: ThreadsGateway
   ) { }
 
   async sendMessage(body: CreateMessageDto) {
     // Check if a match thread exist. If not then create one.
-
-    // Send the message. 
-
+    // Send the message.
     // Update the match thread unread count - creating thread should emit event
     // Emit the send event
+  }
+
+  // Fetch all threads for a user (most recent first) with last message and dog info
+  async getThreadsForUser(userId: number) {
+    const threads = await this.prisma.messageThread.findMany({
+      where: {
+        userParticipants: {
+          some: { id: userId },
+        },
+      },
+      include: {
+        dogParticipants: true,
+        messages: {
+          orderBy: { createdAt: "desc" },
+          take: 1,
+        },
+      },
+      orderBy: { updatedAt: "desc" },
+    });
+
+    return threads;
+  }
+
+  // Fetch a single thread with participants and all messages (newest first)
+  async getThreadById(threadId: number) {
+    return this.prisma.messageThread.findUnique({
+      where: { id: threadId },
+      include: {
+        dogParticipants: true,
+        userParticipants: true,
+        messages: { orderBy: { createdAt: "desc" } },
+      },
+    });
+  }
+
+  // Fetch messages for a thread (paged later if needed)
+  async getMessagesForThread(threadId: number) {
+    return this.prisma.message.findMany({
+      where: { messageThreadId: threadId },
+      orderBy: { createdAt: "desc" },
+    });
   }
 
   async createMatchThread(
@@ -58,7 +97,7 @@ export class MessagesService {
     const dog = messageThread.dogParticipants[0];
 
     // emit thread created event for websocket
-    this.messagesGateway.emitThreadCreated({
+    this.threadsGateway.emitThreadCreated({
       threadId: `user-${dogId}`, // Match the format your frontend expects
       dogName: dog.name,
       dogImage: dog.image,
