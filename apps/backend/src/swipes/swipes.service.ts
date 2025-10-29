@@ -3,13 +3,13 @@ import { PrismaService } from "../prisma/prisma.service";
 import { SwipeDto } from "./dto/swipe.dto";
 import { Swipe } from "@prisma/client";
 import { SwipeStatus } from "@prisma/client";
-import { MessagesService } from "../messages/messages.service";
+import { ThreadsService } from "../threads/threads.service";
 
 @Injectable()
 export class SwipesService {
   constructor(
     private prisma: PrismaService,
-    private messagesService: MessagesService
+    private threadsService: ThreadsService
   ) {}
 
   async create(data: SwipeDto, userId: number) {
@@ -63,7 +63,7 @@ export class SwipesService {
         const willSendMessage = Math.random() < 0.5;
         const initialMessage = willSendMessage ? "Bark Bark Woof!" : undefined;
 
-        await this.messagesService.createMatchThread(
+        await this.threadsService.createMatchThread(
           swipe.userId,
           swipe.dogId,
           initialMessage
