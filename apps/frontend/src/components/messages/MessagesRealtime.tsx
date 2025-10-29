@@ -7,6 +7,14 @@ import { upsertThread } from "@/store/messagesSlice";
 export default function MessagesRealtime() {
   const dispatch = useAppDispatch();
 
+
+  const playMatchSound = () => {
+    const audio = new Audio("/sounds/notification.mp3");
+    audio.play().catch((error) => {
+      console.error("Error playing match sound: ", error);
+    });
+  };
+
   useEffect(() => {
     let socket: any;
 
@@ -22,6 +30,7 @@ export default function MessagesRealtime() {
       socket.on("thread.created", (payload: any) => {
         if (payload?.threadId) {
           dispatch(upsertThread(payload));
+          playMatchSound();
         }
       });
     }

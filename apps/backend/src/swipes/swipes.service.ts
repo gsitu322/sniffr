@@ -3,10 +3,14 @@ import { PrismaService } from "../prisma/prisma.service";
 import { SwipeDto } from "./dto/swipe.dto";
 import { Swipe } from "@prisma/client";
 import { SwipeStatus } from "@prisma/client";
+import { MessagesService } from "../messages/messages.service";
 
 @Injectable()
 export class SwipesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private messagesService: MessagesService
+  ) {}
 
   async create(data: SwipeDto, userId: number) {
     console.log("Creating swipe", data, userId);
@@ -56,30 +60,14 @@ export class SwipesService {
       });
 
       if (dogStatus === SwipeStatus.ACCEPTED) {
-        // if the dog matches the user then create a new message thread.
-        const messageThread = await this.prisma.messageThread.create({
-          data: {
-            userParticipants: {
-              connect: [{ id: swipe.userId }],
-            },
-            dogParticipants: {
-              connect: [{ id: swipe.dogId }],
-            },
-          },
-        });
-
         const willSendMessage = Math.random() < 0.5;
+        const initialMessage = willSendMessage ? "Bark Bark Woof!" : undefined;
 
-        if (willSendMessage) {
-          const message = await this.prisma.message.create({
-            data: {
-              content: "Bark Bark Woof!",
-              senderId: swipe.dogId,
-              receiverId: swipe.userId,
-              messageThreadId: messageThread.id,
-            },
-          });
-        }
+        await this.messagesService.createMatchThread(
+          swipe.userId,
+          swipe.dogId,
+          initialMessage
+        );
       }
     }, delay);
   }
