@@ -30,4 +30,6 @@ export default function MessagesRealtime() {
 
     return () => socket?.disconnect();
   }, [dispatch]);
+
+  return null;
 }
