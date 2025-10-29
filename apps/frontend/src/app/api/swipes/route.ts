@@ -16,8 +16,14 @@ export async function POST(request: Request) {
       body: JSON.stringify(body),
     });
 
-    const data = await response.json();
-    return NextResponse.json(data);
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      console.error("[/api/swipes] backend error payload:", data);
+      return NextResponse.json(data, { status: response.status });
+    }
+
+    return NextResponse.json(data, { status: response.status });
   } catch (error) {
     console.error("Error creating swipe:", error);
     return NextResponse.json(

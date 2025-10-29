@@ -4,17 +4,11 @@ import { motion } from "framer-motion";
 import TinderCard from "react-tinder-card";
 import { useState, useCallback, useEffect } from "react";
 import { Dog } from "@/types/dog";
-import { useAppDispatch } from "@/store/hooks";
-import { upsertThread } from "@/store/messagesSlice";
-import { getInitialMessage } from "@/lib/initialMessageUtil";
-import type { Message } from "@/types/messages";
 
 export default function Discover() {
-  const dispatch = useAppDispatch();
   const [dogs, setDogs] = useState<any[]>([]);
   const [visibleDogs, setVisibleDogs] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
 
   const fetchDogs = useCallback(async () => {
     // End early if we're already loading
@@ -26,18 +20,16 @@ export default function Discover() {
       console.log("Fetching dogs");
       const data = await fetch("/api/candidates");
       const newDogs = await data.json();
-
       console.log("newDogs: ", newDogs);
 
       // Add new dogs to the END for sequential order
       setDogs((prevDogs) => [...prevDogs, ...newDogs]);
-      setOffset((prev) => prev + 20);
     } catch (error) {
       console.error("Error fetching dogs: ", error);
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, offset]);
+  }, [isLoading]);
 
   // Initial Fetch
   useEffect(() => {
@@ -62,14 +54,8 @@ export default function Discover() {
     setVisibleDogs(firstThree);
   }, [dogs]);
 
-  const playMatchSound = () => {
-    const audio = new Audio("/sounds/notification.mp3");
-    audio.play().catch((error) => {
-      console.error("Error playing match sound: ", error);
-    });
-  };
 
-  const onSwipe = (direction: string, dog: any) => {
+  const onSwipe = async (direction: string, dog: any) => {
     console.log("You swiped: " + direction + " on " + dog.name);
 
     // Remove the swiped dog from the BEGINNING (sequential order)
@@ -77,54 +63,18 @@ export default function Discover() {
     setVisibleDogs((prevVisible) => prevVisible.slice(0, -1));
 
     /** TODO: Change to use consts */
-    const status = direction === "right" ? "ACCEPTED" : "REJECTED";
+    const userStatus = direction === "right" ? "ACCEPTED" : "REJECTED";
 
-    fetch("/api/swipes", {
+    await fetch("/api/swipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        status,
+        userStatus,
         dogId: dog.id,
       }),
     });
-
-    if (direction === "right") {
-      const willMatch = Math.random() < 0.75; // 75% chance to match
-      if (!willMatch) {
-        console.log("No match with " + dog.name + "! 💔");
-        return;
-      }
-
-      // If there's a match then wait 1-10 seconds before showing the match
-      console.log("Match with " + dog.name + "! 💕");
-      const delay = Math.random() * 5000 + 1000;
-
-      const initialMsg = getInitialMessage() as Message[];
-
-      setTimeout(() => {
-        // Create a new message thread
-        const threadId = `user-${dog.id}`;
-        dispatch(
-          upsertThread({
-            threadId,
-            dogName: dog.name,
-            dogImage: dog.image,
-            lastMessage:
-              initialMsg && initialMsg.length > 0
-                ? initialMsg[0].content
-                : "Say something to start the conversation!",
-            unreadCount: 1,
-            messages: initialMsg,
-          })
-        );
-
-        playMatchSound();
-      }, delay);
-
-      // TODO: Send match notification to backend
-    }
   };
 
   return (
