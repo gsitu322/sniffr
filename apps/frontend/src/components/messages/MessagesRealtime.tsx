@@ -19,8 +19,6 @@ export default function MessagesRealtime() {
     let socket: any;
 
     async function connect() {
-      // To check if it's installed, look for 'socket.io-client' in your package.json dependencies.
-      // If not installed, run: npm install socket.io-client (or yarn add socket.io-client)
       const { io } = await import("socket.io-client");
       const url =
         process.env.NEXT_PUBLIC_BACKEND_WS_URL || "http://localhost:3001";

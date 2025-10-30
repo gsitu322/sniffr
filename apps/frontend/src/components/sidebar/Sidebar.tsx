@@ -4,7 +4,6 @@ import MessagesListItem from "./MessagesListItem";
 import { useAppSelector } from "@/store/hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import MessagesRealtime from "../messages/MessagesRealtime";
 import { useEffect, useRef, useState } from "react";
 import { setThreads } from "@/store/messagesSlice";
 import { useAppDispatch } from "@/store/hooks";
@@ -46,8 +45,6 @@ export default function Sidebar() {
 
   return (
     <aside className="w-full sm:w-80 sm:min-w-[400px] sm:max-w-md  dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto">
-      <MessagesRealtime />
-
       <SidebarHeader />
       <SidebarBanner />
       <div className="pt-2 px-4">
