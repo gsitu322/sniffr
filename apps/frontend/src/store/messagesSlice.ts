@@ -62,11 +62,15 @@ const messagesSlice = createSlice({
     },
 
     // Load all threads (from initial fetch)
-    setThreads: (
-      state,
-      action: PayloadAction<Record<string, MessageThread>>
-    ) => {
-      state.threads = action.payload;
+    // Converts array from API to Record keyed by threadId
+    setThreads: (state, action: PayloadAction<MessageThread[]>) => {
+      // Convert array to object keyed by threadId
+      const threadsMap: Record<string, MessageThread> = {};
+      action.payload.forEach((thread) => {
+        threadsMap[thread.threadId] = thread;
+      });
+
+      state.threads = threadsMap;
     },
 
     // Clear all messages (logout)

@@ -6,7 +6,7 @@ import { ThreadsService } from "./threads.service";
 @ApiTags("Threads")
 @Controller("threads")
 export class ThreadsController {
-  constructor(private readonly threadsService: ThreadsService) {}
+  constructor(private readonly threadsService: ThreadsService) { }
 
   // GET /threads?userId=1
   @Get()
