@@ -4,13 +4,20 @@ import { SwipeDto } from "./dto/swipe.dto";
 import { Swipe } from "@prisma/client";
 import { SwipeStatus } from "@prisma/client";
 import { ThreadsService } from "../threads/threads.service";
+import { INITIAL_MESSAGES } from "../../data/initialMessags";
 
 @Injectable()
 export class SwipesService {
   constructor(
     private prisma: PrismaService,
     private threadsService: ThreadsService
-  ) {}
+  ) { }
+
+  generateInitalMessage(): string {
+    // Return a random message from INITIAL_MESSAGES
+    const index = Math.floor(Math.random() * INITIAL_MESSAGES.length);
+    return INITIAL_MESSAGES[index];
+  }
 
   async create(data: SwipeDto, userId: number) {
     console.log("Creating swipe", data, userId);
@@ -60,8 +67,10 @@ export class SwipesService {
       });
 
       if (dogStatus === SwipeStatus.ACCEPTED) {
-        const willSendMessage = Math.random() < 0.5;
-        const initialMessage = willSendMessage ? "Bark Bark Woof!" : undefined;
+        const willSendMessage = Math.random() < 0.9;
+        const initialMessage = willSendMessage
+          ? this.generateInitalMessage()
+          : "";
 
         await this.threadsService.createMatchThread(
           swipe.userId,

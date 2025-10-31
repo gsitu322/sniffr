@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { CreateMessageDto } from "../threads/dto/sendMessage.dto";
 import { PrismaService } from "../prisma/prisma.service";
 import { ThreadsGateway } from "./threads.gateway";
-import { MessageThread } from "@prisma/client";
 import { ThreadDto } from "./dto/thread.dto";
 import { MessageDto } from "./dto/message.dto";
 
@@ -11,7 +10,7 @@ export class ThreadsService {
   constructor(
     private prisma: PrismaService,
     private threadsGateway: ThreadsGateway
-  ) {}
+  ) { }
 
   async sendMessage(body: CreateMessageDto) {
     // Check if a match thread exist. If not then create one.
@@ -150,14 +149,14 @@ export class ThreadsService {
       unreadCount: 1,
       messages: lastMessage
         ? [
-            {
-              id: String(Date.now()),
-              content: lastMessage,
-              senderId: String(dogId),
-              timestamp: new Date().toISOString(),
-              read: false,
-            },
-          ]
+          {
+            id: String(Date.now()),
+            content: lastMessage,
+            senderId: String(dogId),
+            timestamp: new Date().toISOString(),
+            read: false,
+          },
+        ]
         : [],
     });
 
