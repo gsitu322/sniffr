@@ -4,6 +4,9 @@ import { PrismaService } from "../prisma/prisma.service";
 import { ThreadsGateway } from "./threads.gateway";
 import { ThreadDto } from "./dto/thread.dto";
 import { MessageDto } from "./dto/message.dto";
+import { UserResponseDto } from "../users/dto/userResponse.dto";
+import { DogResponseDto } from "../dogs/dtos/dog-response.dto";
+import { plainToInstance } from "class-transformer";
 
 @Injectable()
 export class ThreadsService {
@@ -29,6 +32,7 @@ export class ThreadsService {
     options?: { includeAllMessages?: boolean }
   ): ThreadDto {
     const dog = thread.dogParticipants?.[0];
+    const user = thread.userParticipants?.[0];
     const lastMessage = thread.messages?.[0];
     const allMessages = options?.includeAllMessages
       ? thread.messages || []
@@ -38,8 +42,16 @@ export class ThreadsService {
 
     return {
       id: String(thread.id), // Actual database thread ID
-      dogName: dog?.name ?? "Unknown",
-      dogImage: dog?.image ?? "",
+      user: user
+        ? plainToInstance(UserResponseDto, user, {
+            excludeExtraneousValues: true,
+          })
+        : undefined,
+      dog: dog
+        ? plainToInstance(DogResponseDto, dog, {
+            excludeExtraneousValues: true,
+          })
+        : undefined,
       lastMessage:
         lastMessage?.content ?? "Say something to start the conversation!",
       unreadCount: 0, // You'll need to calculate this based on read status
@@ -69,6 +81,7 @@ export class ThreadsService {
         },
       },
       include: {
+        userParticipants: true,
         dogParticipants: true,
         messages: {
           orderBy: { createdAt: "desc" },
@@ -118,6 +131,7 @@ export class ThreadsService {
         },
       },
       include: {
+        userParticipants: true,
         dogParticipants: true,
       },
     });
@@ -139,12 +153,21 @@ export class ThreadsService {
     }
 
     const dog = messageThread.dogParticipants[0];
+    const user = messageThread.userParticipants?.[0];
 
     // emit thread created event for websocket
     this.threadsGateway.emitThreadCreated({
       id: String(messageThread.id), // Actual database thread ID
-      dogName: dog.name,
-      dogImage: dog.image,
+      user: user
+        ? plainToInstance(UserResponseDto, user, {
+            excludeExtraneousValues: true,
+          })
+        : undefined,
+      dog: dog
+        ? plainToInstance(DogResponseDto, dog, {
+            excludeExtraneousValues: true,
+          })
+        : undefined,
       lastMessage: lastMessage ?? "Say something to start the conversation!",
       unreadCount: 1,
       messages: lastMessage

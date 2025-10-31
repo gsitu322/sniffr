@@ -1,15 +1,23 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { MessageDto } from "./message.dto";
+import { UserResponseDto } from "../../users/dto/userResponse.dto";
+import { DogResponseDto } from "../../dogs/dtos/dog-response.dto";
 
 export class ThreadDto {
   @ApiProperty({ description: "Id of the thread (database ID)" })
   id: string;
 
-  @ApiProperty({ description: "Name of the dog" })
-  dogName: string;
+  @ApiProperty({
+    description: "User participant in the thread",
+    type: UserResponseDto,
+  })
+  user?: UserResponseDto;
 
-  @ApiProperty({ description: "Image of the dog" })
-  dogImage: string;
+  @ApiProperty({
+    description: "Dog participant in the thread",
+    type: DogResponseDto,
+  })
+  dog?: DogResponseDto;
 
   @ApiProperty({ description: "Last message of the thread" })
   lastMessage: string;
