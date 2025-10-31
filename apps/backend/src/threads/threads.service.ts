@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { CreateMessageDto } from "../threads/dto/sendMessage.dto";
+import { CreateMessageDto } from "./dto/create-message.dto";
 import { PrismaService } from "../prisma/prisma.service";
 import { ThreadsGateway } from "./threads.gateway";
 import { ThreadDto } from "./dto/thread.dto";

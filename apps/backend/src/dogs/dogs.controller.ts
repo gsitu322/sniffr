@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from "@nestjs/common";
 import { DogsService } from "./dogs.service";
 import { ApiTags, ApiOperation, ApiQuery, ApiResponse } from "@nestjs/swagger";
-import { DogResponseDto } from "./dtos/dogResponse.dto";
+import { DogResponseDto } from "./dtos/dog-response.dto";
 
 @ApiTags("Dogs")
 @Controller("dogs")

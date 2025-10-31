@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-import { DogResponseDto } from "./dtos/dogResponse.dto";
+import { DogResponseDto } from "./dtos/dog-response.dto";
 import { plainToInstance } from "class-transformer";
 
 @Injectable()
