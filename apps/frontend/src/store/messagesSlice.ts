@@ -19,7 +19,7 @@ const messagesSlice = createSlice({
     },
     // Add or update a thread
     upsertThread: (state, action: PayloadAction<MessageThread>) => {
-      state.threads[action.payload.threadId] = action.payload;
+      state.threads[action.payload.id] = action.payload;
     },
 
     // Add a message to a thread
@@ -32,7 +32,7 @@ const messagesSlice = createSlice({
       if (!state.threads[threadId]) {
         // Create thread if doesn't exist
         state.threads[threadId] = {
-          threadId,
+          id: threadId,
           dogName: "Unknown",
           dogImage: "",
           lastMessage: message.content,
@@ -62,12 +62,12 @@ const messagesSlice = createSlice({
     },
 
     // Load all threads (from initial fetch)
-    // Converts array from API to Record keyed by threadId
+    // Converts array from API to Record keyed by thread id
     setThreads: (state, action: PayloadAction<MessageThread[]>) => {
-      // Convert array to object keyed by threadId
+      // Convert array to object keyed by thread id
       const threadsMap: Record<string, MessageThread> = {};
       action.payload.forEach((thread) => {
-        threadsMap[thread.threadId] = thread;
+        threadsMap[thread.id] = thread;
       });
 
       state.threads = threadsMap;

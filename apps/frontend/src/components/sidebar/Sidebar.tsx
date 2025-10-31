@@ -62,19 +62,19 @@ export default function Sidebar() {
         <AnimatePresence>
           {Object.values(threads).map((thread) => (
             <motion.div
-              key={thread.threadId}
+              key={thread.id}
               initial={isInitialLoad ? false : { opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={isInitialLoad ? { duration: 0 } : { duration: 0.3 }}
             >
               <MessagesListItem
-                key={thread.threadId}
+                key={thread.id}
                 dogName={thread.dogName}
                 imageUrl={thread.dogImage}
                 message={thread.lastMessage}
                 unreadCount={thread.unreadCount}
-                onClick={() => handleMessageClick(thread.threadId)}
+                onClick={() => handleMessageClick(thread.id)}
               />
             </motion.div>
           ))}

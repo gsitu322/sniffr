@@ -7,7 +7,6 @@ import { upsertThread } from "@/store/messagesSlice";
 export default function MessagesRealtime() {
   const dispatch = useAppDispatch();
 
-
   const playMatchSound = () => {
     const audio = new Audio("/sounds/notification.mp3");
     audio.play().catch((error) => {
@@ -26,7 +25,7 @@ export default function MessagesRealtime() {
       socket = io(url, { transports: ["websocket"] });
 
       socket.on("thread.created", (payload: any) => {
-        if (payload?.threadId) {
+        if (payload?.id) {
           dispatch(upsertThread(payload));
           playMatchSound();
         }

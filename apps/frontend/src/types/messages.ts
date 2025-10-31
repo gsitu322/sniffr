@@ -7,7 +7,7 @@ export interface Message {
 }
 
 export interface MessageThread {
-  threadId: string;
+  id: string;
   dogName: string;
   dogImage: string;
   lastMessage: string;
@@ -16,6 +16,6 @@ export interface MessageThread {
 }
 
 export interface MessageState {
-  threads: Record<string, MessageThread>; // Key is threadId
+  threads: Record<string, MessageThread>; // Key is thread id
   activeThreadId: string | null;
 }

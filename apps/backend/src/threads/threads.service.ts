@@ -10,7 +10,7 @@ export class ThreadsService {
   constructor(
     private prisma: PrismaService,
     private threadsGateway: ThreadsGateway
-  ) { }
+  ) {}
 
   async sendMessage(body: CreateMessageDto) {
     // Check if a match thread exist. If not then create one.
@@ -37,7 +37,7 @@ export class ThreadsService {
         : [];
 
     return {
-      threadId: `user-${dog?.id ?? thread.id}`, // Match frontend format: user-{dogId}
+      id: String(thread.id), // Actual database thread ID
       dogName: dog?.name ?? "Unknown",
       dogImage: dog?.image ?? "",
       lastMessage:
@@ -142,21 +142,21 @@ export class ThreadsService {
 
     // emit thread created event for websocket
     this.threadsGateway.emitThreadCreated({
-      threadId: `user-${dogId}`, // Match the format your frontend expects
+      id: String(messageThread.id), // Actual database thread ID
       dogName: dog.name,
       dogImage: dog.image,
       lastMessage: lastMessage ?? "Say something to start the conversation!",
       unreadCount: 1,
       messages: lastMessage
         ? [
-          {
-            id: String(Date.now()),
-            content: lastMessage,
-            senderId: String(dogId),
-            timestamp: new Date().toISOString(),
-            read: false,
-          },
-        ]
+            {
+              id: String(Date.now()),
+              content: lastMessage,
+              senderId: String(dogId),
+              timestamp: new Date().toISOString(),
+              read: false,
+            },
+          ]
         : [],
     });
 
